@@ -15,14 +15,28 @@ assessmentButton.addEventListener(
 
     // 診断結果表示エリアの作成
     resultDivision.innerText = '';
-    const header = document.createElement('h3');
-    header.innerText = '診断結果';
-    resultDivision.appendChild(header);
 
-    const paragraph = document.createElement('p');
+    //headerDivisionの作成
+    const headerDivison = document.createElement(`div`)
+    headerDivison.setAttribute(`class`, `card-header text-bg-primary`);
+    headerDivison.innerText = `診断結果`;
+
+    //bodyDivisonの作成
+    const bodyDivison = document.createElement(`div`);
+    bodyDivison.setAttribute(`class`, `card-body`);
+    
+    const paragraph = document.createElement(`p`);
+    paragraph.setAttribute(`class`, `card-text`);
     const result = assessment(userName);
     paragraph.innerText = result;
-    resultDivision.appendChild(paragraph);
+    bodyDivison.appendChild(paragraph);
+
+    //resultDivisionにBootstrapのスタイルを適用する
+    resultDivision.setAttribute(`class`, `card`);
+
+    //headerDivisionとbodyDivisionをresultDivisionに差し込む
+    resultDivision.appendChild(headerDivison);
+    resultDivision.appendChild(bodyDivison);
 
     // ツイートエリアの作成
     tweetDivision.innerText = '';
